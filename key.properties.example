@@ -1,4 +1,0 @@
-storeFile = ./app/zero-keystore.jks
-storePassword = "mysillybuilds123$"
-keyAlias = "upload"
-keyPassword = "password"

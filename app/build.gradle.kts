@@ -15,7 +15,7 @@ android {
         minSdk = 21
         targetSdk = 34
         versionCode = 7
-        versionName = "1.0.7"
+        versionName = "1.0.8"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -23,7 +23,7 @@ android {
     signingConfigs {
         create("release") {
             val keyProps = Properties()
-            keyProps.load(file("../key.properties").inputStream())
+            keyProps.load(file("key.properties").inputStream())
             storeFile = file(keyProps.getProperty("storeFile"))
             storePassword = keyProps.getProperty("storePassword")
             keyAlias = keyProps.getProperty("keyAlias")
