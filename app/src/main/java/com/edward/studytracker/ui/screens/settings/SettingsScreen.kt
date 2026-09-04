@@ -50,6 +50,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import com.edward.studytracker.BuildConfig
 import com.edward.studytracker.R
 import com.edward.studytracker.data.PreferencesManager
 import com.edward.studytracker.data.ProjectRepository
@@ -242,7 +243,7 @@ fun SettingsScreen(
                 SettingsItem(
                     icon = Icons.Default.Info,
                     title = stringResource(R.string.settings_version),
-                    subtitle = stringResource(R.string.settings_version_value),
+                    subtitle = "Study Tracker ${BuildConfig.VERSION_NAME}",
                     onClick = { }
                 )
             }
