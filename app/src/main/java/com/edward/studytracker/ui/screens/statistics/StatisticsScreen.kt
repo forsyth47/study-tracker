@@ -38,6 +38,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -232,7 +233,7 @@ private fun CalendarView(
                     )
                 }
                 Text(
-                    text = "${year}年 ${month + 1}月",
+                    text = stringResource(R.string.stats_month_title, year, month + 1),
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold
                 )
@@ -251,7 +252,7 @@ private fun CalendarView(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceEvenly
             ) {
-                listOf("日", "一", "二", "三", "四", "五", "六").forEach { day ->
+                stringArrayResource(R.array.stats_weekdays).forEach { day ->
                     Text(
                         text = day,
                         style = MaterialTheme.typography.bodySmall,

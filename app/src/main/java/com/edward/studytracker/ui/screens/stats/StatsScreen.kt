@@ -47,6 +47,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -246,7 +247,7 @@ private fun MonthlyHeatmapSection(
                     )
                 }
                 Text(
-                    text = yearMonth.format(DateTimeFormatter.ofPattern("yyyy年 M月", Locale.CHINESE)),
+                    text = yearMonth.format(DateTimeFormatter.ofPattern(stringResource(R.string.stats_month_pattern), Locale.getDefault())),
                     style = MaterialTheme.typography.bodyMedium,
                     fontWeight = FontWeight.Medium
                 )
@@ -263,7 +264,7 @@ private fun MonthlyHeatmapSection(
         Spacer(modifier = Modifier.height(16.dp))
         
         // 星期标签
-        val weekDays = listOf("日", "一", "二", "三", "四", "五", "六")
+        val weekDays = stringArrayResource(R.array.stats_weekdays)
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceEvenly

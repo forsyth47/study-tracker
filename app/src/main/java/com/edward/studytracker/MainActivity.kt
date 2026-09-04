@@ -272,7 +272,7 @@ fun AppNavigation() {
             val projectUnits = units.filter { it.projectId == projectId }
 
             StatsScreen(
-                projectName = project?.name ?: "统计",
+                projectName = project?.name ?: stringResource(R.string.stats_title),
                 units = projectUnits,
                 projectId = projectId,
                 repository = repository,
