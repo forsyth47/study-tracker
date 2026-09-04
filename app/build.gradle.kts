@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "com.edward.studytracker"
-        minSdk = 31
+        minSdk = 21
         targetSdk = 34
         versionCode = 7
         versionName = "1.0.7"
@@ -20,10 +20,12 @@ android {
 
     signingConfigs {
         create("release") {
-            storeFile = file("../release.jks")
-            storePassword = "studytracker"
-            keyAlias = "releaseKey"
-            keyPassword = "studytracker"
+            val keyProps = Properties()
+            keyProps.load(file("../key.properties").inputStream())
+            storeFile = file(keyProps.getProperty("storeFile"))
+            storePassword = keyProps.getProperty("storePassword")
+            keyAlias = keyProps.getProperty("keyAlias")
+            keyPassword = keyProps.getProperty("keyPassword")
         }
     }
 
@@ -38,11 +40,14 @@ android {
         }
     }
     compileOptions {
+        // Backports java.time (used by the stats screen) to API < 26.
+        isCoreLibraryDesugaringEnabled = true
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
     dependenciesInfo {
         includeInApk = false
@@ -60,6 +65,8 @@ tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach 
 }
 
 dependencies {
+    coreLibraryDesugaring(libs.desugar.jdk.libs)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
