@@ -17,4 +17,5 @@ hs_err_pid*.log
 .idea/
 release.jks
 zero-keystore.jks
+app/zero-keystore.jks
 key.properties

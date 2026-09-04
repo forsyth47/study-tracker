@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -55,6 +57,12 @@ android {
     }
     composeOptions {
         kotlinCompilerExtensionVersion = libs.versions.composeCompiler.get()
+    }
+}
+
+tasks.register("printVersionName") {
+    doLast {
+        println(android.defaultConfig.versionName)
     }
 }
 
